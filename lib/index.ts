@@ -28,14 +28,16 @@ const Svg = (html: string, width = "1em", height = "1em") => {
 
   html = ele.innerHTML;
 
-  return (props: any = {}) => {
-    const span = document.createElement("span");
-    span.className = "vanilla-svg " + (props.className || props.class || "");
-    Object.keys(props).forEach((k) => {
-      (span as any)[k] = props[k];
+  return ({ children, className, ...rest }: any = {}) => {
+    const ele = document.createElement("div");
+    ele.className = "vanilla-svg " + (rest.className || rest.class || "");
+    Object.keys(rest).forEach((k) => {
+      if (k !== "class") {
+        (ele as any)[k] = rest[k];
+      }
     });
-    span.innerHTML = html;
-    return span;
+    ele.innerHTML = html;
+    return ele;
   };
 };
 
