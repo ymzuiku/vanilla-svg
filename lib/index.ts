@@ -17,13 +17,15 @@ const Svg = (html: string, width = "1em", height = "1em") => {
     throw "传入的 html 不是一个svg";
   }
   svg.setAttribute("fill", "currentColor");
-  svg.setAttribute("width", width);
-  svg.setAttribute("height", height);
+  svg.style.width = width;
+  svg.style.height = height;
+  // svg.setAttribute("width", width);
+  // svg.setAttribute("height", height);
   const paths = svg.querySelectorAll("path");
   paths.forEach((path) => {
     path.setAttribute("fill", "currentColor");
-    path.setAttribute("width", width);
-    path.setAttribute("height", height);
+    // path.setAttribute("width", width);
+    // path.setAttribute("height", height);
   });
 
   html = ele.innerHTML;
