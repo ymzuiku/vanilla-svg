@@ -10,9 +10,9 @@ style.textContent = `
 document.head.append(style);
 
 const Svg = (html: string, width = "1em", height = "1em") => {
-  const ele = document.createElement("div");
-  ele.innerHTML = html;
-  const svg = ele.querySelector("svg");
+  const temp = document.createElement("div");
+  temp.innerHTML = html;
+  const svg = temp.querySelector("svg");
   if (!svg) {
     throw "传入的 html 不是一个svg";
   }
@@ -28,7 +28,7 @@ const Svg = (html: string, width = "1em", height = "1em") => {
     // path.setAttribute("height", height);
   });
 
-  html = ele.innerHTML;
+  html = temp.innerHTML;
 
   return ({ children, className, ...rest }: any = {}) => {
     const ele = document.createElement("div");
